@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Generate Markdown formatted tables online from HTML table syntax">
+		<meta name="keywords" content="Markdown, Tables">
+		<meta name="author" content="mrvautin.com + jasoft.org">
+		<link rel="icon" href="favicon.ico">
+		<title>markdownTables</title>
+		<meta property="og:site_name" content="markdownTables">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="markdownTables - Turn HTML table syntax into Markdown">
+		<meta property="og:url" content="https://jmalarcon.github.io/markdowntables">
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:title" content="markdownTables - Turn HTML table syntax into Markdown">
+		<meta name="twitter:url" content="https://jmalarcon.github.io/markdowntables">
+		<link href="./CSS/style.css" rel="stylesheet">
+		<link rel="stylesheet" href="./CSS/bootstrap.min.css">
+		<link rel="stylesheet" href="./CSS/font-awesome.min.css">
+		<script src="./scripts/jquery.min.js"></script>
+		<script src="./scripts/code.js"></script>
+    </head>
+	<body><div class="container-fluid">
+        <div class="row">
+            <div class="header col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1 class="navbar-brand text-primary">markdownTables <small class="text-muted"><h2 class="sub-text">Turn HTML table syntax into Markdown</h2></small></h1><span class="pull-right navbar-text"><button class="btn btn-success buttons" onclick="process_table()">Generate Markdown table</button></span>
+            </div>
+        </div>
+		<div class="row main-body" style="padding-top: 10px;">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<div class="form-group">
+					<label for="html_input"><strong>Enter HTML table code:</strong></label>
+					<textarea id="html_input" class="form-control" rows="20" style="width: 100%; height: 826px;">&lt;table&gt;
+	&lt;tr&gt;
+		&lt;th&gt;Month&lt;/th&gt;
+		&lt;th&gt;Savings&lt;/th&gt;
+		&lt;th&gt;Spending&lt;/th&gt;
+ 	&lt;/tr&gt;
+ 	&lt;tr&gt;
+  		&lt;td&gt;January&lt;/td&gt;
+   		&lt;td&gt;$100&lt;/td&gt;
+		&lt;td&gt;$900&lt;/td&gt;
+ 	&lt;/tr&gt;
+	&lt;tr&gt;
+  		&lt;td&gt;July&lt;/td&gt;
+   		&lt;td&gt;$750&lt;/td&gt;
+		&lt;td&gt;$1000&lt;/td&gt;
+ 	&lt;/tr&gt;
+	&lt;tr&gt;
+  		&lt;td&gt;December&lt;/td&gt;
+   		&lt;td&gt;$250&lt;/td&gt;
+		&lt;td&gt;$300&lt;/td&gt;
+ 	&lt;/tr&gt;
+	&lt;tr&gt;
+  		&lt;td&gt;April&lt;/td&gt;
+   		&lt;td&gt;$400&lt;/td&gt;
+		&lt;td&gt;$700&lt;/td&gt;
+ 	&lt;/tr&gt;
+&lt;/table&gt;
+					</textarea>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<div class="form-group">
+					<label for="markdown_output"><strong>Markdown code:</strong></label>
+					<textarea id="markdown_output" class="form-control" rows="20" style="width: 100%; height: 826px;"></textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
