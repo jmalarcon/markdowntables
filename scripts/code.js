@@ -9,9 +9,8 @@ $( window ).resize(function() {
 });
 
 function fixText(text){
-    //Remove spaces and tabs (it's HTML, sothey don't affect, but in Markdown, they do.)
+    //Remove tabs (it's HTML, so they don't affect the final render, but in Markdown, they do.)
     var res = text.trim().replace('\t','');
-    res = res.replace(/\s{2,}/g, ' ');
     return res;
 }
 
@@ -29,34 +28,28 @@ function process_table(){
 	
 	// if there is a thead we append
 	$(html).find('thead > tr > td').each(function() {
-		if(fixText($(this).text()) != ""){
-			table_header = table_header + fixText($(this).text()) + "|";
-			table_header_footer = table_header_footer + "--- |";
-			table_header_found = true;
-		}
+        table_header = table_header + fixText($(this).text()) + "|";
+        table_header_footer = table_header_footer + "--- |";
+        table_header_found = true;
 	});
 	
 	// loop all the rows
 	$(html).find('tr').each(function() {
 		// get the header if present
 		$(this).find('th').each(function() {
-			if(fixText($(this).text()) != ""){
-				table_header = table_header + fixText($(this).text()) + "|";
-				table_header_footer = table_header_footer + "--- |";
-				table_header_found = true;
-			}
+            table_header = table_header + fixText($(this).text()) + "|";
+            table_header_footer = table_header_footer + "--- |";
+            table_header_found = true;
 		});
 		
 		// get the cells if they are not in thead
 		var table_row = "";
 		$(this).find('td').not("thead > tr > td").each(function() {
 			//console.log($(this).text());
-			if(fixText($(this).text()) != ""){
 				table_row = table_row + fixText($(this).text()) + "|";
-			}
 		});
 		
-		// only add row if its got data
+		// only add row if it has data
 		if(table_row != ""){
 			table_rows += "|" + table_row + "\n"
 		}
