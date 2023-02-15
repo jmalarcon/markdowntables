@@ -21,7 +21,7 @@ function process_table(){
 	
 	// set the strings to hold the data
 	var markdown_string = '';
-	var table_header = '|';
+	var table_header = '| ';
 	var table_header_footer = '|';
 	var table_rows = '';
 	var table_header_found = false;
@@ -31,8 +31,8 @@ function process_table(){
 	// if there is a thead we append
 	$(html).find('thead > tr > td').each(function() {
         table_header_cell_count++;
-        table_header = table_header + fixText($(this).text()) + '|';
-        table_header_footer = table_header_footer + '--- |';
+        table_header = table_header + fixText($(this).text()) + ' | ';
+        table_header_footer = table_header_footer + ' --- |';
         table_header_found = true;
 	});
 	
@@ -42,8 +42,8 @@ function process_table(){
         if (!table_header_found) {
             $(this).find('th').each(function() {
                 table_header_cell_count++;
-                table_header = table_header + fixText($(this).text()) + '|';
-                table_header_footer = table_header_footer + '--- |';
+                table_header = table_header + fixText($(this).text()) + ' | ';
+                table_header_footer = table_header_footer + ' --- |';
                 table_header_found = true;
             });
         }
@@ -53,7 +53,7 @@ function process_table(){
         var curr_row_cell_count = 0;
 		$(this).find('td').not('thead > tr > td').each(function() {
                 curr_row_cell_count++;
-				table_row = table_row + fixText($(this).text()) + '|';
+				table_row = table_row + fixText($(this).text()) + ' | ';
 		});
         
         //Check that the number of cells match in all the rows
@@ -65,7 +65,7 @@ function process_table(){
 		
 		// only add row if it has data
 		if(curr_row_cell_count){
-			table_rows += '|' + table_row + '\n'
+			table_rows += '| ' + table_row.trim() + '\n'
             prev_row_cell_count = curr_row_cell_count;
 		}
 	});	
@@ -84,12 +84,12 @@ function process_table(){
             //It it's missing, add an empty header, since most of the Markdown processors can't render a table without a header
             for(var i=0; i<prev_row_cell_count; i++) {
                 table_header = table_header + '|';
-                table_header_footer = table_header_footer + '--- |';
+                table_header_footer = table_header_footer + ' --- |';
             }
         }
         
         //Append header at the beggining
-        markdown_string += table_header + '\n';
+        markdown_string += table_header.trim() + '\n';
         markdown_string += table_header_footer + '\n';
         
         //add all the rows
